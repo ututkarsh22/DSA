@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+ int lengthOfLongestSubstring(string s) {
+        vector<bool>store(256,0);
+        int n=s.size();
+        int first=0,second=0,len=0;
+
+        while(second<n)
+        {
+            while(store[s[second]])
+            {
+                store[s[first]]=0;
+                first++;
+            }
+            store[s[second]]=1;
+            len=max(len,(second-first)+1);
+            second++;
+        }
+    return len;
+    }
+
+int main(){
+
+string s;
+cin>>s;
+lengthOfLongestSubstring(s);
+cout<<lengthOfLongestSubstring(s);
+
+}
